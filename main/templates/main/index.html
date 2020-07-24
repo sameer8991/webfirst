@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-md-8 offset-md-2">
+    <h3 class="pb-4 mb-4 font-italic border-bottom cat">
+        UPDATED
+    </h3>
+    {% for i in post %}
+    <article>
+        <div class="p-4 mb-2 bg-light rounded" style="max-width: 900px; background-color: #cde4fb!important;">
+            <h2 class="blog-post-title">{{i.heading}}&nbsp;</h2>
+            <p class="blog-post-meta">{{i.date_posted.date}}&nbsp; by <a href="">{{i.author}}&nbsp;</a></p>
+            <p>{{i.content| slice:":500" | linebreaks}}&nbsp;</p>
+            <hr>
+            <!-- /.blog-post -->
+            <button class="btn btn-primary"><a href="{% url 'detail' i.pk %}" style="color: white;">read more</a></button>
+        </div>
+    </article>
+    {% endfor %}
+</div>
+{% endblock %}
